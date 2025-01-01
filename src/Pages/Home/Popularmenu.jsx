@@ -29,6 +29,12 @@ fetch("menu.json")
         }
 
       </section>
+   <div className="flex justify-center my-9">
+   <button className="btn btn-outline font-bold  
+       border-0 border-b-4 ">
+      View Full  Menu</button>
+   </div>
+    
     </section>
   );
 };
