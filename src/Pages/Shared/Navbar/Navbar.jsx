@@ -6,6 +6,7 @@ export const Navbar = () => {
     <>
     <li><NavLink className={'mx-1'} to={'/'}> Home</NavLink></li>
     <li><NavLink className={'mx-1'} to={'/menu'}>Menu</NavLink></li>
+    <li><NavLink className={'mx-1'} to={'/order'}>Order</NavLink></li>
 
 
     </>
