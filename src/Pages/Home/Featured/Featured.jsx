@@ -32,7 +32,10 @@ export const Featured = () => {
     a delightful selection to satisfy every craving, from classic favorites to unique gourmet creations. 
     Visit us and taste the difference today!
           </p>
-          <button className="btn btn-outline font-bold text-white border-1 border-b-4 hover:border-b-2 hover:border-white">Read More</button>
+          <button 
+          className="btn btn-outline font-bold
+           text-white border-1 border-b-4 hover:border-b-2
+            hover:border-white">Read More</button>
         </div>
       </div>
     </div>

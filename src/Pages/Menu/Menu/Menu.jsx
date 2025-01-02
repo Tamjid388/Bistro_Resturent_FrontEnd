@@ -45,7 +45,7 @@ export const Menu = () => {
       {/* Desert Menu*/}
       <MenuCategory
       coverImage={DessertImg}
-      title={"DESSERTS"}
+      title={"dessert"}
       subtitle="Indulge in our irresistible desserts,
        each crafted with the finest 
       ingredients and a touch of sweetness to satisfy every craving."
@@ -55,23 +55,23 @@ export const Menu = () => {
       {/* pizza Menu*/}
       <MenuCategory
       coverImage={pizzaImg}
-      title={"Pizza"}
+      title={"pizza"}
       subtitle="Savor the rich flavors of our hand-crafted pizzas, with a variety of toppings and a 
       crispy, golden crust that will leave you craving more"
        items={pizza}
       ></MenuCategory>
-      {/* pizza Menu*/}
+      {/* salad Menu*/}
       <MenuCategory
       coverImage={saladImg}
-      title={"Salad"}
+      title={"salad"}
       subtitle="Experience the freshness of our vibrant salads, bursting with crisp
        vegetables, flavorful dressings, and wholesome ingredients."
        items={salad}
       ></MenuCategory>
-      {/* pizza Menu*/}
+      {/* soup Menu*/}
       <MenuCategory
       coverImage={soupImg}
-      title={"Soup"}
+      title={"soup"}
       subtitle="Warm up with our hearty, comforting soups, made with
        fresh ingredients and rich, flavorful broths to soothe your soul."
        items={soup}
