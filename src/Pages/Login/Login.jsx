@@ -12,6 +12,7 @@ export const Login = () => {
          const captcha_value=captchaRef.current.value
        if(validateCaptcha(captcha_value)){
           setDisabled(false)
+       
        }else{
           setDisabled(true)
        }
@@ -75,11 +76,11 @@ export const Login = () => {
   
   
 
+            {/* disabled={disabled} */}
 
-
-            {/* Submit Button */}
+            {/* Submit Button */} 
             <div>
-              <button disabled={disabled} type="submit" className=" btn btn-primary w-full">
+              <button  type="submit" className=" btn btn-primary w-full">
                 Login
               </button>
             </div>
