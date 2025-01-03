@@ -6,7 +6,7 @@ import { Navbar } from "../Pages/Shared/Navbar/Navbar"
 export const Mainlayout = () => {
   const location=useLocation()
   console.log(location);
-  const removeNavAndFooter=location.pathname.includes('login')
+  const removeNavAndFooter=location.pathname.includes('login') || location.pathname.includes('signUp') 
   return (
     <div>
        { removeNavAndFooter || <Navbar></Navbar>}
