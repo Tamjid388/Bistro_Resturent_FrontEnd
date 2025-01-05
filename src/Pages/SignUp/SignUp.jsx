@@ -2,18 +2,27 @@ import React, { useContext } from 'react'
 import { AuthContext } from '../../Providers/AuthProvider'
 import { useForm } from 'react-hook-form'
 import { Helmet } from 'react-helmet-async'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 
 export const SignUp = () => {
-    const {createUser}=useContext(AuthContext)
-    const {register,handleSubmit,formState:{errors}} =useForm()
+    const {createUser,UpdateProfile}=useContext(AuthContext)
+    const {register,handleSubmit,reset,formState:{errors}} =useForm()
+    const navigate=useNavigate()
 
     const onSubmit = (data) =>{ 
         console.log(data)
+
         createUser(data.email,data.password)
         .then(result=>{
             const loggedUser=result.user
             console.log(loggedUser);
+          navigate("/")
+          UpdateProfile(data.name,data.photoUrl)
+          .then(()=>{
+            console.log("Profile Updated");
+            reset()
+          })
+          .catch(error=>console.log("Falied To Update Profile",error))
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -57,6 +66,24 @@ export const SignUp = () => {
           
         />
          {errors.name?.type === "required" && (
+        <p role="alert" className='text-red-600'>Name is required</p>
+      )}
+      </div>
+      
+      {/* Photo Url Field */}
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Photo Url
+        </label>
+        <input
+         {...register("photoUrl",{required:true})}
+          type="url"
+          name="photoUrl"
+          placeholder="Enter Your Photo Url"
+          className="input input-bordered w-full"
+          
+        />
+         {errors.photoUrl?.type === "required" && (
         <p role="alert" className='text-red-600'>Name is required</p>
       )}
       </div>

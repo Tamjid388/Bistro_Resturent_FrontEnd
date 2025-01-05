@@ -34,7 +34,7 @@ export const Navbar = () => {
       :
       <>
 
-<li><NavLink className={'mx-1'} to={'/login'}>Login</NavLink></li>
+      <li><NavLink className={'mx-1'} to={'/login'}>Login</NavLink></li>
       </>
 
      }
@@ -75,7 +75,7 @@ export const Navbar = () => {
       </ul>
     </div>
     <div className="navbar-end">
-      <a className="btn">Button</a>
+   <span>{user?.displayName}</span>
     </div>
   </div></div>
   )
