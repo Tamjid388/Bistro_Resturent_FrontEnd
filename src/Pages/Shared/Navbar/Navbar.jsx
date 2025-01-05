@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { Link, NavLink } from "react-router-dom"
 import { AuthContext } from "../../../Providers/AuthProvider"
 import Swal from "sweetalert2"
+import { IoMdCart } from "react-icons/io"
 
 
 export const Navbar = () => {
@@ -25,6 +26,12 @@ export const Navbar = () => {
     <li><NavLink className={'mx-1'} to={'/'}> Home</NavLink></li>
     <li><NavLink className={'mx-1'} to={'/menu'}>Menu</NavLink></li>
     <li><NavLink className={'mx-1'} to={'/order/salad'}>Order</NavLink></li>
+    <li>
+    <button className=" ">
+  <p className="mr-2"><IoMdCart></IoMdCart></p>
+  <div className="badge badge-secondary">+0</div>
+</button>
+    </li>
     
      {
       user ? 
