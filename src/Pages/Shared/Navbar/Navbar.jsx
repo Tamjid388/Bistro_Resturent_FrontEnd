@@ -3,10 +3,12 @@ import { Link, NavLink } from "react-router-dom"
 import { AuthContext } from "../../../Providers/AuthProvider"
 import Swal from "sweetalert2"
 import { IoMdCart } from "react-icons/io"
+import useCart from "../../../Hooks/useCart"
 
 
 export const Navbar = () => {
   const {user,logout}=useContext(AuthContext)
+  const [cart]=useCart()
   const handlelogout=()=>{
     logout()
     .then(()=>{
@@ -29,7 +31,7 @@ export const Navbar = () => {
     <li>
     <button className=" ">
   <p className="mr-2"><IoMdCart></IoMdCart></p>
-  <div className="badge badge-secondary">+0</div>
+  <div className="badge badge-secondary">+{cart.length}</div>
 </button>
     </li>
     
