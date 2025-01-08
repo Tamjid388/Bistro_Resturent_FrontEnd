@@ -29,16 +29,18 @@ export const Navbar = () => {
     <li><NavLink className={'mx-1'} to={'/menu'}>Menu</NavLink></li>
     <li><NavLink className={'mx-1'} to={'/order/salad'}>Order</NavLink></li>
     <li>
-    <button className=" ">
+   <NavLink to={"/dashboard/cart"}>
+   <button className="flex justify-center items-center">
   <p className="mr-2"><IoMdCart></IoMdCart></p>
   <div className="badge badge-secondary">+{cart.length}</div>
 </button>
+   </NavLink>
     </li>
-    
+    <li className="btn-outline">
      {
       user ? 
       <>
-      <button className="btn btn-ghost" onClick={handlelogout}>Logout</button>
+      <NavLink className="" onClick={handlelogout}>Logout</NavLink>
       </>
       :
       <>
@@ -46,7 +48,7 @@ export const Navbar = () => {
       <li><NavLink className={'mx-1'} to={'/login'}>Login</NavLink></li>
       </>
 
-     }
+     }</li>
 
 
     </>
