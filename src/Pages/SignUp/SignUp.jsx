@@ -7,7 +7,7 @@ import { useAxiosPublic } from "../../Hooks/useAxiosPublic";
 
 export const SignUp = () => {
   const axiosPublic=useAxiosPublic()
-  const { createUser, UpdateProfile } = useContext(AuthContext);
+  const { createUser, UpdateProfile,signinwithGoogle } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -35,6 +35,7 @@ export const SignUp = () => {
             axiosPublic.post("users",userInfo)
             .then(res=>{
               if(res.data.insertedId){
+                console.log('user added to the database')
                 reset();
                 navigate("/");
 
@@ -53,6 +54,27 @@ export const SignUp = () => {
       });
   };
 
+  const HandleSignInwithgoogle=()=>{
+    signinwithGoogle()
+    .then(result=>{
+      console.log(result.user)
+      const userInfo={
+        name:result.user?.name,
+        email:result.user?.email
+
+      
+      }
+      axiosPublic.post("/users",userInfo)
+      .then(res=>{
+        console.log(res.data);
+        console.log("signinWith google successfull");
+        navigate("/")
+      })
+    })
+
+  }
+  // xyz@gmail.com Passw0rd1
+   
   // const handleSignup = (e) => {
   //     e.preventDefault();
   //     const name = e.target.name.value;
@@ -169,6 +191,7 @@ export const SignUp = () => {
 
           {/* Google Signup Button */}
           <button
+          onClick={HandleSignInwithgoogle}
             type="button"
             className="btn w-full bg-red-500 hover:bg-red-600 text-white"
           >

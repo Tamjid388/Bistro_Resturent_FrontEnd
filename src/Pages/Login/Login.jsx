@@ -8,10 +8,14 @@ import {
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useAxiosPublic } from "../../Hooks/useAxiosPublic";
+import axios from "axios";
 
 export const Login = () => {
   const [disabled, setDisabled] = useState(true);
-  const {signIn}=useContext(AuthContext)
+  const {signIn,signinwithGoogle}=useContext(AuthContext)
+  const axiosPublic=useAxiosPublic()
+  
   const navigate=useNavigate()
   const location=useLocation()
   const from=location.state?.from?.pathname || "/"
@@ -21,6 +25,25 @@ export const Login = () => {
     loadCaptchaEnginge(2);
   }, []);
 
+  const HandleSignInwithgoogle=()=>{
+    signinwithGoogle()
+    .then(result=>{
+      console.log(result.user)
+      const userInfo={
+        name:result.user?.name,
+        email:result.user?.email
+
+      
+      }
+      axiosPublic.post("/users",userInfo)
+      .then(res=>{
+        console.log(res.data);
+        console.log("signinWith google successfull");
+        navigate("/")
+      })
+    })
+
+  }
   
   const handleValidateCaptcha = (e) => {
     const captcha_value = e.target.value;
@@ -128,6 +151,18 @@ export const Login = () => {
               Login
             </button>
           </div>
+
+               {/* Divider */}
+               <div className="text-center text-sm text-gray-500 my-4">OR</div>
+
+{/* Google Signup Button */}
+<button
+onClick={HandleSignInwithgoogle}
+  type="button"
+  className="btn w-full bg-red-500 hover:bg-red-600 text-white"
+>
+  Sign Up with Google
+</button>
 
           {/* Extra Links */}
           <div className="text-center mt-4">
